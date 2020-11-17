@@ -35,10 +35,6 @@ dependencies {
 	// Jankson
 	modCompile "io.github.cottonmc:Jankson-Fabric:${project.jankson_version}"
 	include "io.github.cottonmc:Jankson-Fabric:${project.jankson_version}"
-	
-	// stuff for dev env
-	modImplementation "io.github.prospector:modmenu:${project.modmenu_version}"
-    modImplementation ("me.shedaniel:RoughlyEnoughItems:${project.rei_version}") { exclude(module: 'ModMenu') }
 }
 
 processResources {
