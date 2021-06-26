@@ -7,10 +7,8 @@ import com.shnupbups.extrapieces.core.PieceTypes;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.WallBlock;
+import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
+import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.world.ServerWorld;
@@ -31,7 +29,7 @@ public class WallPieceBlock extends WallBlock implements PieceBlock {
 	private final PieceSet set;
 
 	public WallPieceBlock(PieceSet set) {
-		super(FabricBlockSettings.copyOf(set.getBase()).materialColor(set.getBase().getDefaultMaterialColor()));
+		super(FabricBlockSettings.copyOf(set.getBase()).materialColor(set.getBase().getDefaultMapColor()).breakByHand(!(set.getBase().getDefaultState().getMaterial().equals(Material.STONE) || set.getBase().getDefaultState().getMaterial().equals(Material.METAL))).breakByTool(FabricToolTags.PICKAXES));
 		this.set = set;
 	}
 
@@ -89,10 +87,10 @@ public class WallPieceBlock extends WallBlock implements PieceBlock {
 	}
 
 	@Override
-	public void onSteppedOn(World world_1, BlockPos blockPos_1, Entity entity_1) {
-		super.onSteppedOn(world_1, blockPos_1, entity_1);
+	public void onSteppedOn(World world, BlockPos pos, BlockState state, Entity entity) {
+		super.onSteppedOn(world, pos, state, entity);
 		try {
-			this.getBase().onSteppedOn(world_1, blockPos_1, entity_1);
+			this.getBase().onSteppedOn(world, pos, state, entity);
 		} catch (IllegalArgumentException ignored) {
 			ExtraPieces.debugLog("Caught an exception in onSteppedOn for "+this.getPieceString());
 		}
