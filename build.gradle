@@ -29,7 +29,7 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
 	// Artifice
-	modImplementation "com.lettuce.fudge:artifice:${project.artifice_version}"
+	modImplementation "io.github.natanfudge:artifice:${project.artifice_version}"
 	include "com.lettuce.fudge:artifice:${project.artifice_version}"
 
 	// Jankson
