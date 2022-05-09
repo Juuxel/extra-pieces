@@ -7,7 +7,6 @@ import com.shnupbups.extrapieces.core.PieceTypes;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -50,7 +49,7 @@ public class LayerPieceBlock extends Block implements Waterloggable, PieceBlock 
 	private final PieceSet set;
 
 	public LayerPieceBlock(PieceSet set) {
-		super(FabricBlockSettings.copyOf(set.getBase()).materialColor(set.getBase().getDefaultMapColor()).breakByHand(!(set.getBase().getDefaultState().getMaterial().equals(Material.STONE) || set.getBase().getDefaultState().getMaterial().equals(Material.METAL))).breakByTool(FabricToolTags.PICKAXES));
+		super(FabricBlockSettings.copyOf(set.getBase()).materialColor(set.getBase().getDefaultMapColor()));
 		this.set = set;
 		this.setDefaultState(this.stateManager.getDefaultState().with(LAYERS, 1).with(FACING, Direction.UP).with(WATERLOGGED, false));
 	}

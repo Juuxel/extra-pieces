@@ -7,7 +7,6 @@ import com.shnupbups.extrapieces.core.PieceTypes;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Material;
@@ -23,7 +22,7 @@ public class StairsPieceBlock extends StairsBlock implements PieceBlock {
 	private final PieceSet set;
 
 	public StairsPieceBlock(PieceSet set) {
-		super(set.getBase().getDefaultState(), FabricBlockSettings.copyOf(set.getBase()).materialColor(set.getBase().getDefaultMapColor()).breakByHand(!(set.getBase().getDefaultState().getMaterial().equals(Material.STONE) || set.getBase().getDefaultState().getMaterial().equals(Material.METAL))).breakByTool(FabricToolTags.PICKAXES));
+		super(set.getBase().getDefaultState(), FabricBlockSettings.copyOf(set.getBase()).materialColor(set.getBase().getDefaultMapColor()));
 		this.set = set;
 	}
 

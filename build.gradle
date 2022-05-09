@@ -1,17 +1,14 @@
 plugins {
-	id 'fabric-loom' version '0.8-SNAPSHOT'
+	id 'fabric-loom' version '0.11-SNAPSHOT'
 	id 'maven-publish'
 }
 
-sourceCompatibility = JavaVersion.VERSION_16
-targetCompatibility = JavaVersion.VERSION_16
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
 
 archivesBaseName = project.archives_base_name
 version = project.mod_version
 group = project.maven_group
-
-minecraft {
-}
 
 repositories {
     maven { url "https://minecraft.curseforge.com/api/maven"}
@@ -22,15 +19,15 @@ repositories {
 dependencies {
 	//to change the versions see the gradle.properties file
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
-	mappings "net.fabricmc:yarn:${project.minecraft_version}+build.${project.yarn_mappings}:v${project.tiny_version}"
+	mappings "net.fabricmc:yarn:${project.minecraft_version}+build.${project.yarn_mappings}"
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
 	// Artifice
-	modImplementation "io.github.natanfudge:artifice:${project.artifice_version}"
-	include "io.github.natanfudge:artifice:${project.artifice_version}"
+	modImplementation "io.github.vampirestudios:artifice:${project.artifice_version}"
+	include "io.github.vampirestudios:artifice:${project.artifice_version}"
 
 	// Jankson
 	modImplementation "io.github.cottonmc:Jankson-Fabric:${project.jankson_version}"

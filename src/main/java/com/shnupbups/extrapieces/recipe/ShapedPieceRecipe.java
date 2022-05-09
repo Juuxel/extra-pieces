@@ -5,10 +5,11 @@ import com.google.common.collect.Multimap;
 import com.google.common.collect.MultimapBuilder;
 import com.shnupbups.extrapieces.core.PieceSet;
 import com.shnupbups.extrapieces.core.PieceType;
-import com.swordglowsblue.artifice.api.ArtificeResourcePack;
+import io.github.vampirestudios.artifice.api.ArtificeResourcePack;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.tag.Tag;
+import net.minecraft.tag.TagKey;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
@@ -33,7 +34,7 @@ public class ShapedPieceRecipe extends PieceRecipe {
 		return addToKey(c, new PieceIngredient(item));
 	}
 	
-	public ShapedPieceRecipe addToKey(char c, Tag.Identified<Item> tag) {
+	public ShapedPieceRecipe addToKey(char c, TagKey tag) {
 		return addToKey(c, new PieceIngredient(tag));
 	}
 

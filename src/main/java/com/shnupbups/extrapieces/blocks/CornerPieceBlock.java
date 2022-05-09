@@ -7,11 +7,11 @@ import com.shnupbups.extrapieces.core.PieceTypes;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ai.pathing.NavigationType;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.fluid.Fluid;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
@@ -28,9 +28,11 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
+import net.minecraft.world.TickPriority;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.explosion.Explosion;
+import net.minecraft.world.tick.OrderedTick;
 
 import java.util.Random;
 
@@ -71,7 +73,7 @@ public class CornerPieceBlock extends Block implements Waterloggable, PieceBlock
 	private final PieceSet set;
 
 	public CornerPieceBlock(PieceSet set) {
-		super(FabricBlockSettings.copyOf(set.getBase()).materialColor(set.getBase().getDefaultMapColor()).breakByHand(!(set.getBase().getDefaultState().getMaterial().equals(Material.STONE) || set.getBase().getDefaultState().getMaterial().equals(Material.METAL))).breakByTool(FabricToolTags.PICKAXES));
+		super(FabricBlockSettings.copyOf(set.getBase()).materialColor(set.getBase().getDefaultMapColor()));
 		this.set = set;
 		this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH).with(WATERLOGGED, false));
 	}
@@ -197,7 +199,7 @@ public class CornerPieceBlock extends Block implements Waterloggable, PieceBlock
 
 	public BlockState getStateForNeighborUpdate(BlockState blockState_1, Direction direction_1, BlockState blockState_2, WorldAccess worldAccess_1, BlockPos blockPos_1, BlockPos blockPos_2) {
 		if (blockState_1.get(WATERLOGGED)) {
-			worldAccess_1.getFluidTickScheduler().schedule(blockPos_1, Fluids.WATER, Fluids.WATER.getTickRate(worldAccess_1));
+			worldAccess_1.getFluidTickScheduler().scheduleTick(new OrderedTick<Fluid>(Fluids.WATER, blockPos_1,0L, TickPriority.NORMAL,0L));
 		}
 
 		return super.getStateForNeighborUpdate(blockState_1, direction_1, blockState_2, worldAccess_1, blockPos_1, blockPos_2);

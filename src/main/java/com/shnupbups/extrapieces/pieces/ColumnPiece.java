@@ -4,7 +4,7 @@ import com.shnupbups.extrapieces.blocks.ColumnPieceBlock;
 import com.shnupbups.extrapieces.blocks.PieceBlock;
 import com.shnupbups.extrapieces.core.PieceSet;
 import com.shnupbups.extrapieces.core.PieceType;
-import com.swordglowsblue.artifice.api.ArtificeResourcePack;
+import io.github.vampirestudios.artifice.api.ArtificeResourcePack;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.registry.Registry;
 

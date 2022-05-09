@@ -2,7 +2,7 @@ package com.shnupbups.extrapieces;
 
 import com.shnupbups.extrapieces.register.ModModels;
 import com.shnupbups.extrapieces.register.ModRenderLayers;
-import com.swordglowsblue.artifice.api.Artifice;
+import io.github.vampirestudios.artifice.api.Artifice;
 import net.fabricmc.api.ClientModInitializer;
 
 public class ExtraPiecesClient implements ClientModInitializer {
